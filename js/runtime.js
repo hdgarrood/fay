@@ -240,6 +240,9 @@ function Fay$$fayToJs(type,fayObj){
   else if(base == "automatic" && fayObj instanceof Function) {
     return Fay$$fayToJs(["function", "automatic_function"], fayObj);
   }
+  else if(base == "automatic" && fayObj instanceof Fay$$Monad) {
+    return Fay$$fayToJs(["automatic"],Fay$$_(fayObj,true).value);
+  }
   else if(base == "automatic" || base == "user") {
     fayObj = Fay$$_(fayObj);
 
